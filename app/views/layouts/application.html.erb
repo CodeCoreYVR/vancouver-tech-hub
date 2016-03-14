@@ -8,6 +8,16 @@
 </head>
 <body>
 
+  <% if user_signed_in? %>
+  <li><%= link_to "#{current_user.full_name}'s Profile", user_path(current_user)%></li>
+  <li><%= link_to "SIGN OUT", sessions_path, method: :delete %></li>
+  <li><%= link_to has_unread_messages?? (fa_icon('envelope') + " new msg!") : fa_icon('envelope'), conversations_path %>
+  </li>
+  <% else %>
+  <li><%= link_to "NEW USER", new_user_path %></li>
+  <li><%= link_to "LOG IN", new_session_path %></li>
+  <% end %>
+
 <%= yield %>
 
 </body>
