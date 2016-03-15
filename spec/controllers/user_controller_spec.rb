@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  let(:user) {FactoryGirl.create(:user)}
   let(:valid_attributes) {
     attributes_for(:user)
   }
@@ -73,4 +74,18 @@ RSpec.describe UsersController, type: :controller do
       end
     end
   end
+
+  describe "#edit" do
+    before do
+      get :edit, id: user.id
+    end
+    it "renders edit template" do
+      expect(response).to render_template(:edit)
+    end
+
+    it "finds the user id and set it to the @user param" do
+      expect(assigns(:user)).to eq(user)
+    end
+  end
+
 end
