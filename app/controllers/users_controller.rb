@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       redirect_to root_path, notice: "User Created!"
     else
+      flash[:alert] = "Error creating user"
       render :new
     end
   end
