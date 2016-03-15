@@ -7,8 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
+      <nav class="navbar navbar-inverse">
         <ul class="nav navbar-nav navbar-left">
         <li><%= link_to "HOME", root_path, class: "navbar-left" %></li>
         <% if user_signed_in? %>
@@ -19,8 +18,8 @@
         <li><%= link_to "New User", new_user_path, class: "navbar-left" %></li>
         <% end %>
       </ul>
-      </div>
     </nav>
+
     <div>
       <% if notice %>
       <p class="alert alert-success alert-dismissible"><%= notice%></p>
