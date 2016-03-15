@@ -25,22 +25,20 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "quiet_assets"
 gem "font-awesome-rails"
 gem 'active_model_serializers'
-gem "faker", "~>1.6.1"
 gem "cowsay"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
-gem "letter_opener", :group => :development
 gem 'bootstrap-sass'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
 gem 'rails_12factor', group: :production
-gem "faker", "~>1.6.1"
-gem "cowsay"
+gem 'simple_form'
+
+
 gem "fog"
 gem "mini_magick"
 gem "friendly_id"
-gem "carrier"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -53,9 +51,12 @@ gem "carrier"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-  gem 'nyan-cat-formatter'
+  gem "rspec-rails"
+  gem "capybara"
+  gem "faker", "~>1.6.1"
+  gem "factory_girl_rails"
+  gem "letter_opener", :group => :development
+  gem "simplecov"
 end
 
 group :development do
