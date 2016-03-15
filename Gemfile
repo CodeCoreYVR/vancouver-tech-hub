@@ -25,7 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "quiet_assets"
 gem "font-awesome-rails"
 gem 'active_model_serializers'
-gem "quiet_assets"
 gem "cowsay"
 gem 'rack-cors', :require => 'rack/cors'
 gem 'delayed_job_active_record'
@@ -34,8 +33,9 @@ gem 'bootstrap-sass'
 gem 'bcrypt', '~> 3.1.7'
 gem 'cancancan'
 gem 'rails_12factor', group: :production
+gem 'simple_form'
 
-gem "cowsay"
+
 gem "fog"
 gem "mini_magick"
 gem "friendly_id"
