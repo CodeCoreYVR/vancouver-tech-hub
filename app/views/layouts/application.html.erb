@@ -7,17 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <% if user_signed_in? %>
-  <li><%= link_to "#{current_user.full_name}'s Profile", user_path(current_user)%></li>
-  <li><%= link_to "SIGN OUT", sessions_path, method: :delete %></li>
-  <li><%= link_to has_unread_messages?? (fa_icon('envelope') + " new msg!") : fa_icon('envelope'), conversations_path %>
-  </li>
-  <% else %>
-  <li><%= link_to "NEW USER", new_user_path %></li>
-  <li><%= link_to "LOG IN", new_session_path %></li>
-  <% end %>
-
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to "HOME", root_path, class: "navbar-left" %></li>
+        <% if user_signed_in? %>
+        <li><%= current_user.full_name %></li>
+        <li><%= link_to "Log out", sessions_path, method: :delete, class: "navbar-left" %></li>
+        <% else %>
+        <li><%= link_to "Sign in", new_session_path, class: "navbar-left" %></li>
+        <li><%= link_to "New User", new_user_path, class: "navbar-left" %></li>
+        <% end %>
+      </ul>
+      </div>
+    </nav>
+    <div>
+      <% if notice %>
+      <p class="alert alert-success alert-dismissible"><%= notice%></p>
+      <% elsif alert %>
+      <p class="alert alert-danger alert-dismissible"><%= alert%></p>
+      <% end %>
+    </div>
 <%= yield %>
 
 </body>
