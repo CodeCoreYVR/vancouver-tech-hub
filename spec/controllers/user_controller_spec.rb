@@ -36,7 +36,7 @@ RSpec.describe UsersController, type: :controller do
 
       it "redirects to the home page" do
         send_valid_request
-        expect(response).to redirect_to(user_path(User.last))
+        expect(response).to redirect_to(root_path)
       end
 
       it "sets a flash notice message" do
@@ -52,7 +52,7 @@ RSpec.describe UsersController, type: :controller do
 
     context "unsuccessful create" do
       def send_invalid_request
-        post :create, user: valid_attributes
+        post :create, user: invalid_attributes
       end
 
       it "doesn't create a user record in the database" do
@@ -67,10 +67,10 @@ RSpec.describe UsersController, type: :controller do
         expect(response).to render_template(:new)
       end
 
-      # it "sets a flash alert message" do
-      #   send_invalid_request
-      #   expect(flash[:alert]).to be
-      # end
+      it "sets a flash alert message" do
+        send_invalid_request
+        expect(flash[:alert]).to be
+      end
     end
   end
 end
