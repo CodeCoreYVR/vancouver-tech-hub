@@ -2,7 +2,7 @@
 
 <%@users.each do |u| %>
 <div class="well">
-<%= u.full_name %>
+<%= link_to u.full_name, user_path(u) %>
 </div>
 <% end %>
 </div>
