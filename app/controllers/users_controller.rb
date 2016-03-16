@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:update, :edit, :destroy]
+
   def index
     @users = User.all
   end  
@@ -17,8 +19,27 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    if @user.update user_params
+      redirect_to @user, notice: "update success"
+    else
+      flash[:alert] = "update failed."
+      render :edit
+    end
+
+  end
+
   private
+
   def user_params
-    user_params = params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def find_user
+    @user = User.find params[:id]
   end
 end
