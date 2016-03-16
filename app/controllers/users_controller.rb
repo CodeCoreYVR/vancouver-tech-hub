@@ -3,19 +3,18 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-  end
-
+  end  
   def new
     @user = User.new
   end
-
+  
   def create
-    @user = User.new(user_params)
+    @user = User.new user_params
     if @user.save
       sign_in(@user)
       redirect_to root_path, notice: "User Created!"
     else
-      flash[:alert] = "Error creating user"
+      flash[:alert] = "Error, please check below"
       render :new
     end
   end
